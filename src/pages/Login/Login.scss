@@ -1,0 +1,70 @@
+body{
+  background-color: rgb(238, 237, 237);
+}
+.container{
+  width: 400px;
+  margin:  20% auto;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+/* 공통 */
+@mixin flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoWrap{
+  padding: 60px;
+  @include flex-center;
+  .logo-text{
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+  }
+}
+
+
+.loginWrap{
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  .login-input{
+    border: none;
+    width: 90%;
+    margin: 10px;
+    font-size: 16px;
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.btnWrap{
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 10px;
+  padding-top: 6px;
+  .btn{
+    width: 100%;
+    padding: 10px;
+    background-color: #1e90ff;
+    border: 0px;
+    border-radius: 6px;
+    font: 16px '나눔고딕',sans-serif,Arial;
+    color: #fff;
+    /* 기본 비활성화 상태 */
+    &:disabled{
+      background-color: rgba(30, 144, 255, 0.4);
+    }
+  }
+}
+
+.text{
+  padding-top: 70px;
+  padding-bottom: 20px;
+  text-align: center;
+  font: 14px '나눔고딕',sans-serif,Arial;
+}
