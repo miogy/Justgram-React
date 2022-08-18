@@ -7,7 +7,11 @@ function Feed(){
   const [commentArr,setCommentArr] = useState([ 
     {
     id:0,
-    content:"lalalala"
+    content:"lalalala 😂😂😂"
+  },
+  {
+    id:1,
+    content:"simple 🤟🏼"
   }
   ]);    
 
