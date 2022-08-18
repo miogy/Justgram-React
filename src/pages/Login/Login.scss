@@ -15,6 +15,12 @@ body{
   justify-content: center;
   align-items: center;
 }
+@mixin btnStyle{
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 10px;
+  padding-top: 6px;
+}
 .logoWrap{
   padding: 60px;
   @include flex-center;
@@ -43,22 +49,23 @@ body{
 }
 
 .btnWrap{
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-bottom: 10px;
-  padding-top: 6px;
+  @include flex-center;
+  @include btnStyle;
   .btn{
     width: 100%;
-    padding: 10px;
-    background-color: #1e90ff;
+    padding: 10px;   
+    //background-color: #1f8fff;
     border: 0px;
     border-radius: 6px;
     font: 16px '나눔고딕',sans-serif,Arial;
     color: #fff;
-    /* 기본 비활성화 상태 */
-    &:disabled{
-      background-color: rgba(30, 144, 255, 0.4);
     }
+  .disabledBtn{
+    /* 기본 비활성화 상태 */
+    width: 100%;
+    padding: 10px; 
+    border-radius: 6px;  
+    //background-color: #1f8fff80;
   }
 }
 
