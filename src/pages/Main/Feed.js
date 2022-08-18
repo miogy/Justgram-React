@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Comment from "./Comment";
 
 function Feed(){
   const [id, setId] = useState(1);
@@ -11,6 +11,9 @@ function Feed(){
   }
   ]);    
 
+  const listComments = commentArr.map((comment)=>{
+    return <li key={comment.id}>{comment.content}</li>
+  })
   const addComment = () => {
     setId(id + 1);
     const newComment = {
@@ -20,7 +23,6 @@ function Feed(){
     console.log(newComment);
     setCommentArr([...commentArr, newComment])
   }
-
   return(
 <div className="contentsWrap">
 
@@ -57,11 +59,7 @@ function Feed(){
 
 <div className="feedComment">
   <div className="paddingLeft feedCommentLike">name님 외 10명이 좋아합니다</div>
-  <div className="feedCommentList">
-    {commentArr.map((comment)=>{
-      return <li key={comment.id}>{comment.content}</li>
-    })}
-  </div>
+  <Comment listComments={listComments}/>
   <div className="commentTime">42분전</div>
 
 <div className="feedCommentWrite newComment">

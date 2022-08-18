@@ -1,3 +1,10 @@
+@mixin list {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
 @mixin v-center{
   display: flex;
   justify-content: center;
@@ -6,36 +13,6 @@
 
 $borderBottom :1px solid lightgray ;
 
-
-/* header */
-.headerWrap{
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 100px;
-  border-bottom: $borderBottom;
-  background-color: #fff;
-  img{
-    width: 20px;
-    padding-right: 10px;
-  }
-  .logoImg{
-    border-right: 1px solid #333;
-  }
-  .header-text{
-    font-family: 'Great Vibes', cursive;
-    font-size: 30px;
-    padding-left: 10px;
-  }
-  .headerSearch{
-    width: 400px;
-    padding: 5px;
-    border: 1px solid lightgray;
-  }
-  .icon-img>img{
-    padding-left: 12px;
-  }
-  
-}
 
 /* contents */
 .contentsWrap{

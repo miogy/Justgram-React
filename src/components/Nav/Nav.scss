@@ -1,0 +1,38 @@
+@mixin v-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$borderBottom :1px solid lightgray ;
+
+/* header */
+.headerWrap{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 100px;
+  border-bottom: $borderBottom;
+  background-color: #fff;
+  @include v-center;
+  img{
+    width: 20px;
+    padding-right: 20px;
+  }
+  .logoImg{
+    border-right: 1px solid #333;
+  }
+  .header-text{
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    padding:0 20px;
+  }
+  .headerSearch{
+    width: 40vW;
+    padding: 5px;
+    border: 1px solid lightgray;
+  }
+  .icon-img>img{
+    padding:0 6px;
+  }
+  
+}

@@ -7,46 +7,42 @@ function Login(){
 
   const navigate = useNavigate();
 
+  //4-1.value값을 담을 state를 만듬
   const [id,setId] = useState('');
   const [pw,setPw] = useState('');
   const [isValid,setIsValid] = useState(false);
 
-  const handleIdInput = (e)=>{
-    const idValue = e.target.value;
-    setId(idValue);
-    //console.log(id)
-    idValue.includes('@') && pw.length >=5 ? setIsValid(true) : setIsValid(false)
-  } //id => 변경되는 idValue의 값을 받아서 비교
-  const handlePwInput = (e)=>{
-    const pwValue = e.target.value;
-    setPw(pwValue);
-    //console.log(pw)
-    id.includes('@') && pwValue.length >= 5 ? setIsValid(true) : setIsValid(false);
-  }//pw => 변경되는 pwValue의 값을 받아서 비교
+  const handleIdInput = (e)=>{    //3.handleIdInput=>이벤트를 인자로 받음
+    const idValue = e.target.value; //e.target.value:이벤트가 일어난 타겟의 value(input의 value값)
+    setId(idValue);   //4.이벤트가 일어난 요소에 value값(e.target.value)을 가져옴
+    // => 이벤트onChange가 일어날때마다 input의 value값을 가져옴
+    idValue.includes('@') && pw.length >=5 ? setIsValid(true) : setIsValid(false) //id => 변경되는 idValue의 값을 받아서 비교
+  } 
+  const handlePwInput = (e)=>{     //3.handlePwInput=>이벤트를 인자로 받음
+    const pwValue = e.target.value; 
+    setPw(pwValue); //4.이벤트가 일어난 요소에 담긴 value값(e.target.value)을 가져옴
+    id.includes('@') && pwValue.length >= 5 ? setIsValid(true) : setIsValid(false); //pw => 변경되는 pwValue의 값을 받아서 비교
+  }
   
-  
+  //1.input에 onChange이벤트 발생, 2.발생시 handleIdInput함수 실행
   return(
     <div className="container">
       <div className="logoWrap">
       <span className="logo-text">Justgram</span>
     </div>
-
+    
     <div className="formWrap">
       <div className="flex-center loginWrap">
         <input id="idForm" className="login-input" type="text" placeholder="전화번호, 사용자 이름 또는 이메일" 
-        onChange={handleIdInput} 
-        />
+        onChange={handleIdInput} />
       </div>
       <div className="flex-center loginWrap">
         <input id="pwForm" className="login-input" type="text" placeholder="비밀번호"
-        onChange={handlePwInput} 
-        />
-        
+        onChange={handlePwInput} />
       </div>  
       
       <div className="btnWrap ">
         <button className="btn"
-        //활성화 스타일
         style={{backgroundColor : isValid ? "#1f8fff" : "#1f8fff80" }}
         >로그인</button>
       </div>
