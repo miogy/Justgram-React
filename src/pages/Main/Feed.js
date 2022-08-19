@@ -1,32 +1,21 @@
-import React, { useState } from "react";
-import Comment from "./Comment";
+import React, { useEffect, useState } from "react";
+
+import Commentlist from "./CommentList";
 
 function Feed(){
-  const [id, setId] = useState(1);
-  const [comment,setComment] = useState(); //comment를 담는 state선언
-  const [commentArr,setCommentArr] = useState([ 
-    {
-    id:0,
-    content:"lalalala 😂😂😂"
-  },
-  {
-    id:1,
-    content:"simple 🤟🏼"
-  }
-  ]);    
+  
+  const [commentList,setCommentList] = useState([]);
+  
+  useEffect(()=>{
+    fetch('http://localhost:3000/data/commentData.json',{
+      method : 'GET'
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      setCommentList(data.commentData);
+    })
+  },[])
 
-  const listComments = commentArr.map((comment)=>{
-    return <li key={comment.id}>{comment.content}</li>
-  })
-  const addComment = () => {
-    setId(id + 1);
-    const newComment = {
-      id:id,
-      content: comment,
-    };
-    console.log(newComment);
-    setCommentArr([...commentArr, newComment])
-  }
   return(
 <div className="contentsWrap">
 
@@ -49,34 +38,14 @@ function Feed(){
 </div>
 
 <div className="feedMenu ">
-  <ul>
-    <li><a href="#"/>
-    좋아요
-    </li>
-    <li><a href="#">
-    댓글</a></li>
-    <li><a href="#">
-    공유</a></li>
-  </ul>
+  <p>
+  <span>💜</span>
+  <span>💬</span>
+  <span>📤</span>
+  </p>
   <p>담기</p>
 </div>
-
-<div className="feedComment">
-  <div className="paddingLeft feedCommentLike">name님 외 10명이 좋아합니다</div>
-  <Comment listComments={listComments}/>
-  <div className="commentTime">42분전</div>
-
-<div className="feedCommentWrite newComment">
-  <input type="text" 
-  className="inputNewComment" 
-  placeholder="댓글 달기 ... " 
-  onChange={(e)=>{
-    setComment(e.target.value)
-  }}
-  />
-  <button className="newCommentBtn feedCommentBtn" onClick={addComment}>게시</button>
-</div>
-</div>
+<Commentlist />
 </div>
 
 </div>
