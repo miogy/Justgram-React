@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Comment from "./Comment";
 
-function Commentlist(){
+function CommentList(){
   const [id, setId] = useState(1); //newcomment id
   const [comment,setComment] = useState(); 
-  const [commentArr,setCommentArr] = useState([]); 
+  const [commentArr,setCommentArr] = useState([]);
   
   const addComment = () => {
     setId(id + 1);
@@ -20,12 +20,17 @@ function Commentlist(){
     return <li key={comment.id}>{comment.content}</li>
   })
 
+  useEffect(()=>{
+    fetch('/data/commentData.json')
+    .then((res) => res.json())
+    .then((data) => setCommentArr(data.comments))
+  })
+
   return(
-    <div className="feedComment">
+  <div className="feedComment">
   <div className="paddingLeft feedCommentLike">name님 외 10명이 좋아합니다</div>
-  <ul>
-  </ul>
-  <Comment listComments={listComments}/>
+   <Comment listComments={listComments}/>
+     
   <div className="commentTime">42분전</div>
 
 <div className="feedCommentWrite newComment">
@@ -41,4 +46,4 @@ function Commentlist(){
 </div>
   )
 }
-export default Commentlist;
+export default CommentList;

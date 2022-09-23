@@ -3,9 +3,11 @@ import React from "react";
 function Comment(props){
   
   return(
-      <div className="feedCommentList" key={props.id}>
-       {props.listComments}
+    <div>
+      <div></div>
+      <div className="feedCommentList" key={props.listComments}>{props.listComments}
       </div>
+    </div>
   )
 }
 export default Comment;
