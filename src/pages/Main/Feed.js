@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
+import Comment from "./Comment";
+import CommentList from "./CommentList";
 
-import Commentlist from "./CommentList";
-
-function Feed(){
+//feedData {}로 전체 받아오기
+function Feed({feedData}){
   
   const [commentList,setCommentList] = useState([]);
   
   useEffect(()=>{
-    fetch('http://localhost:3000/data/commentData.json',{
+    fetch('/data/commentData.json',{
       method : 'GET'
     })
     .then(res=>res.json())
@@ -27,14 +28,14 @@ function Feed(){
   <div className="v-center">
     <a className="v-center" href="#">
       <img className="profileImg" src="./images/profile.jpeg" alt="이미지"/>
-      <span> mi_ogy</span>
+      <span> {feedData.userName}</span>
     </a>
   </div>
   <div>...</div>
 </div>
 
 <div className="feedImgWrap borderBottom">
-  <img className="feedImg" src="./images/me.jpeg" alt="사진"/>
+  <img className="feedImg" src={feedData.feedImages[0].imageUrl} alt="사진"/>
 </div>
 
 <div className="feedMenu ">
@@ -44,8 +45,12 @@ function Feed(){
   <span>📤</span>
   </p>
   <p>담기</p>
+  
 </div>
-<Commentlist />
+<div className="userContent">{feedData.content}</div>
+<div>
+  <CommentList />
+</div>
 </div>
 
 </div>

@@ -1,11 +1,16 @@
-import React,{useState} from "react";
+import React,{useEffect, useState,useNavigate} from "react";
 import './Login.scss';
-import { useNavigate} from "react-router-dom"; //a태그와 같이 ling가 들어감
+import { useNavigate} from "react-router-dom"; //a태그와 같이 link가 들어감
 
 
 function Login(){
+  
 
   const navigate = useNavigate();
+  const [btn,setBtn] = useState({
+    email : '',
+    password : ''
+  })
 
   //4-1.value값을 담을 state를 만듬
   const [id,setId] = useState('');
@@ -24,6 +29,21 @@ function Login(){
     id.includes('@') && pwValue.length >= 5 ? setIsValid(true) : setIsValid(false); //pw => 변경되는 pwValue의 값을 받아서 비교
   }
   
+  const body = {
+    username:'jjangrl@gmail.com',
+    password:'123456'
+  }
+  fetch('http://localhost:3000/auth',{
+    headers:{
+      'Content-Type':'application/json',
+      "Authorization":localStorage.getItem('token')
+    },
+    body: JSON.stringify(body)
+  }).then(res=>res.json())
+    .then(json=>{
+      localStorage.setItem("token",json.access_token)
+    })
+  
   //1.input에 onChange이벤트 발생, 2.발생시 handleIdInput함수 실행
   return(
     <div className="container">
@@ -34,16 +54,19 @@ function Login(){
     <div className="formWrap">
       <div className="flex-center loginWrap">
         <input id="idForm" className="login-input" type="text" placeholder="전화번호, 사용자 이름 또는 이메일" 
-        onChange={handleIdInput} />
+        onChange={handleIdInput} 
+        />
       </div>
       <div className="flex-center loginWrap">
         <input id="pwForm" className="login-input" type="text" placeholder="비밀번호"
-        onChange={handlePwInput} />
+        onChange={handlePwInput}
+        />
       </div>  
       
       <div className="btnWrap ">
         <button className="btn"
         style={{backgroundColor : isValid ? "#1f8fff" : "#1f8fff80" }}
+        
         >로그인</button>
       </div>
     </div>

@@ -13,12 +13,10 @@
 
 $borderBottom :1px solid lightgray ;
 
-
 /* contents */
 .contentsWrap{
   /* 화면에 100  */
   /* height: 100vh;  */
-  padding-top: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,13 +27,12 @@ $borderBottom :1px solid lightgray ;
   overflow: hidden;
   width: 500px;
   height: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border: 1px solid lightgray;
   border-radius: 10px;
   /* background-color: cadetblue; */
   background-color: #fff;
   &:last-child{
-    margin-bottom: 80px;
     border-bottom: $borderBottom;
   }
   .feedHeader{
@@ -77,21 +74,22 @@ $borderBottom :1px solid lightgray ;
     }
   }
 }
-
+.userContent{
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
 /* comment */
 .feedComment{
   div:nth-child(1){
     margin-bottom: 10px;
     padding-left: 10px;
   }
-  div:nth-child(4){
-    padding-bottom: 10px;
-    font-size: 14px;
-    color: #999;
-  }
   .commentTime{
     padding-left: 10px;
+    color: #999;
+    padding-bottom: 6px;
   }
+
 }
 
 .newComment{
